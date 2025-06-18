@@ -27,3 +27,21 @@ source .venv/bin/activate           # macOS/Linux
 
 # 2. Install ADK
 pip install google-adk
+project_folder/
+├── pom.xml (or build.gradle)
+└── src/main/java/agents/multitool/MultiToolAgent.java
+multi_tool_agent/
+├── __init__.py
+├── agent.py
+└── .env
+from . import agent
+# For generic Gemini API
+GOOGLE_GENAI_USE_VERTEXAI=FALSE
+GOOGLE_API_KEY=PASTE_YOUR_API_KEY_HERE
+
+# For Vertex AI use (optional):
+# GOOGLE_GENAI_USE_VERTEXAI=TRUE
+# GOOGLE_CLOUD_PROJECT=your-gcp-project-id
+# GOOGLE_CLOUD_LOCATION=your-gcp-location
+cd parent_folder  # the directory containing multi_tool_agent/
+adk web
