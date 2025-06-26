@@ -28,7 +28,7 @@ Java**
 Use Maven or Gradle to add ADK dependencies in your pom.xml or build.gradle.
 Refer to the [ADK docs] quickstart for exact dependency coordinates
 
-Create Agent Project
+2. Create Project Structure
 multi_tool_agent/
 ├── __init__.py
 ├── agent.py
@@ -36,28 +36,43 @@ multi_tool_agent/
 
 __init__.py:
 from . import agent
-agent.py: Defines tool functions (get_weather, get_current_time) and instantiates an Agent with these tools
-.env: Stores authentication keys 
 
-LLM Configuration & Authentication
-Ensure you have credentials set up:
-{For Gemini via API Key
+agent.py: import datetime
+from zoneinfo import ZoneInfo
+from google.adk.agents import Agent
+
+def get_weather(city: str) -> dict:
+    # ... (as per Quickstart)
+    ...
+
+def get_current_time(city: str) -> dict:
+    # ... (as per Quickstart)
+    ...
+
+root_agent = Agent(
+    name="weather_time_agent",
+    model="gemini-2.0-flash",
+    description="Agent to answer time & weather in a city.",
+    instruction="You are a helpful agent who can answer user questions about the time and weather in a city.",
+    tools=[get_weather, get_current_time],
+)
+
+.env: 
 GOOGLE_GENAI_USE_VERTEXAI=FALSE
-GOOGLE_API_KEY=YOUR_API_KEY_HERE}
-{For Vertex AI
+GOOGLE_API_KEY=PASTE_YOUR_API_KEY
+
+Or, for Vertex AI mode:
 GOOGLE_GENAI_USE_VERTEXAI=TRUE
 GOOGLE_CLOUD_PROJECT=YOUR_PROJECT_ID
-GOOGLE_CLOUD_LOCATION=YOUR_LOCATION}
-For Java, replace these with corresponding environment variables
+GOOGLE_CLOUD_LOCATION=YOUR_LOCATION
 
-Running the Agent
-Launching Dev UI (Python):
-cd parent_folder
+3.Run Your Agent
+Navigate to the parent directory and start your agent:
+
+Developer UI:
 adk web
 
-Open http://localhost:8000
-
-Select your agent (e.g., multi_tool_agent)
+Open the provided URL (e.g., http://localhost:8000) and select "multi_tool_agent".
 
 Chat interactively or enable voice/video streaming after switching to a Gemini Live model
 
