@@ -37,25 +37,7 @@ multi_tool_agent/
 __init__.py:
 from . import agent
 
-agent.py: import datetime
-from zoneinfo import ZoneInfo
-from google.adk.agents import Agent
-
-def get_weather(city: str) -> dict:
-    # ... (as per Quickstart)
-    ...
-
-def get_current_time(city: str) -> dict:
-    # ... (as per Quickstart)
-    ...
-
-root_agent = Agent(
-    name="weather_time_agent",
-    model="gemini-2.0-flash",
-    description="Agent to answer time & weather in a city.",
-    instruction="You are a helpful agent who can answer user questions about the time and weather in a city.",
-    tools=[get_weather, get_current_time],
-)
+agent.py:https://google.github.io/adk-docs/get-started/quickstart/#agentpy
 
 .env: 
 GOOGLE_GENAI_USE_VERTEXAI=FALSE
@@ -69,14 +51,14 @@ GOOGLE_CLOUD_LOCATION=YOUR_LOCATION
 ## 3.Run Your Agent
 Navigate to the parent directory and start your agent:
 
-Developer UI:
+*Developer UI:*
 adk web
 
-Open the provided URL (e.g., http://localhost:8000) and select "multi_tool_agent".
+*Open the provided URL (e.g., http://localhost:8000) and select "multi_tool_agent".*
 
 Chat interactively or enable voice/video streaming after switching to a Gemini Live model
 
-Example Prompts
+*Example Prompts*
 “What is the weather in New York?”
 
 “What is the time in New York?”
