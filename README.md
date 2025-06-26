@@ -28,7 +28,7 @@ Java**
 Use Maven or Gradle to add ADK dependencies in your pom.xml or build.gradle.
 Refer to the [ADK docs] quickstart for exact dependency coordinates
 
-2. Create Project Structure
+## 2. Create Project Structure
 multi_tool_agent/
 ├── __init__.py
 ├── agent.py
@@ -66,7 +66,7 @@ GOOGLE_GENAI_USE_VERTEXAI=TRUE
 GOOGLE_CLOUD_PROJECT=YOUR_PROJECT_ID
 GOOGLE_CLOUD_LOCATION=YOUR_LOCATION
 
-3.Run Your Agent
+## 3.Run Your Agent
 Navigate to the parent directory and start your agent:
 
 Developer UI:
@@ -85,7 +85,7 @@ Example Prompts
 
 “What is the time in Paris?”
 
-#*Project Structure*
+## *Project Structure*
 parent_folder/
 ├── multi_tool_agent/
 │   ├── __init__.py
